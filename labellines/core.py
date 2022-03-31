@@ -125,7 +125,11 @@ def labelLines(
     else:
         ax = plt.gca()
 
-    handles, allLabels = ax.get_legend_handles_labels()
+    handles = lines #use the handles from the provided lines
+    allLabels = []
+    for line in lines: #update the labels from the provided lines
+        handles_allLabels_dict = dict(zip(handles_allLabels[0],handles_allLabels[1]))
+        allLabels.append(handles_allLabels_dict[line])
 
     all_lines = []
     for h in handles:
